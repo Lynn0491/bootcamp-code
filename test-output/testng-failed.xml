@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="bootcamp(failed)">
+    <classes>
+      <class name="examples.FirstSeleniumTest">
+        <methods>
+          <include name="logInSuccesfull"/>
+        </methods>
+      </class> <!-- examples.FirstSeleniumTest -->
+    </classes>
+  </test> <!-- bootcamp(failed) -->
+</suite> <!-- Failed suite [Default Suite] -->
