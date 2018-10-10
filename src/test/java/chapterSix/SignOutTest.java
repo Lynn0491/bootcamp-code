@@ -14,10 +14,7 @@ public class SignOutTest {
         ChromeDriverManager.getInstance().setup();
         WebDriver driver = new ChromeDriver();
 
-
-
         driver.get("http://automationpractice.com/");
-
 
         driver.manage().window().maximize();
 

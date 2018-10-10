@@ -1,5 +1,6 @@
 package chapterSix;
 
+import browser.TestShopScenario;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
@@ -10,16 +11,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-public class FillCartTest {
+public class FillCartTest extends TestShopScenario {
 
     @Test
     public void emptyCart() throws InterruptedException {
-        ChromeDriverManager.getInstance().setup();
-        WebDriver driver = new ChromeDriver();
+//        ChromeDriverManager.getInstance().setup();
+//        WebDriver driver = new ChromeDriver();
         WebDriverWait wait = new WebDriverWait(driver, 5);
 
-        driver.get("http://automationpractice.com/");
-        driver.manage().window().maximize() ;
+//        driver.get("http://automationpractice.com/");
+//        driver.manage().window().maximize();
 
         //Cart empty
         Assertions.assertThat(driver.findElement(By.className("ajax_cart_no_product")).isDisplayed()).isTrue();
@@ -48,11 +49,13 @@ public class FillCartTest {
         wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id='header']/div[3]/div/div/div[3]/div/a/span[1]"))));
         driver.findElement(By.xpath("//*[@id='layer_cart']/div[1]/div[2]/div[4]/span")).click();
 
+        //Assert shopping cart
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[@class='shopping_cart']//span[@class='ajax_cart_quantity unvisible']"))));
+        Assertions.assertThat(driver.findElement(By.xpath("//div[@class='shopping_cart']//span[@class='ajax_cart_quantity unvisible']")).getText()).isEqualTo("1");
 
-        Assertions.assertThat(driver.findElement(By.xpath("//div[@class='shopping_cart']//span[@class='ajax_cart_quantity']")).getText()).isEqualTo("1");
- 
 
-        driver.quit();
+
+//        driver.quit();
     }
 
 
